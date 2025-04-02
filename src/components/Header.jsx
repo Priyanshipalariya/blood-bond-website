@@ -19,7 +19,7 @@ const Navbar = () => {
 
   return (
     <header className="fixed top-0 right-0 left-0 shadow-md px-5">
-      <div className=" flex h-14 md:h-16 items-center justify-between ">
+      <div className=" flex h-16 items-center justify-between ">
         <div className="flex items-center gap-2 font-bold text-red-700">
           <GiHeartDrop className="text-3xl md:text-5xl" />
           <span className="text-2xl lg:text-3xl">Blood Bond</span>

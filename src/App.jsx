@@ -9,6 +9,7 @@ import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
+      <Footer />
     </div>
 
 

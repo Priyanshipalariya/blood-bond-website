@@ -15,7 +15,7 @@ const App = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <div className="flex-grow mt-16">
+      <div className="flex-grow">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/donate" element={<DonatePage />} />

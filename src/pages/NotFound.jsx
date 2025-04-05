@@ -19,9 +19,6 @@ const NotFound = () => {
                     <p className="text-gray-600 lg:text-[20px] mb-6 text-[15px] font-mono">
                         The page you're looking for doesn't exist.
                     </p>
-                    <Link to="/">
-                        <ButtonLink className="lg:text-xl lg:hover:text-2xl">Return to Home</ButtonLink>
-                    </Link>
                 </div>
             </div>
         </div>

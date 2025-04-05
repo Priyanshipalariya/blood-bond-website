@@ -18,7 +18,7 @@ const Navbar = () => {
 
 
   return (
-    <header className="fixed top-0 right-0 left-0 shadow-md px-5">
+    <header className="sticky top-0 bg-white z-50 shadow-md px-5">
       <div className=" flex h-16 items-center justify-between ">
         <div className="flex items-center gap-2 font-bold text-red-700">
           <GiHeartDrop className="text-3xl md:text-5xl" />
@@ -53,7 +53,7 @@ const Navbar = () => {
 
       {/* SideBar of options */}
       <div
-        className={`fixed rounded-lg top-16 right-5 w-48 bg-white/70 text-md shadow-lg md:hidden transition-all duration-300 ease-in-out transform ${isMenuOpen
+        className={`fixed rounded-lg top-18 right-2 w-48 bg-white text-md shadow-lg md:hidden transition-all duration-300 ease-in-out transform ${isMenuOpen
           ? "opacity-100 scale-100 translate-y-0 pointer-events-auto"
           : "opacity-0 scale-95 -translate-y-4 pointer-events-none"
           }`}

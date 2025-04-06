@@ -10,7 +10,7 @@ const ValuesComponent = () => {
           <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Our Values</h2>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-            <Card className="overflow-hidden border-2 border-gray-200 hover:border-red-600 mx-10 sm:mx-0">
+            <Card className="overflow-hidden  hover:border-red-600 mx-10 sm:mx-0">
               <CardContent className="p-6 text-center">
                 <div className="bg-red-50 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                   <FaRegHeart className="h-8 w-8 text-red-700" />
@@ -22,7 +22,7 @@ const ValuesComponent = () => {
               </CardContent>
             </Card>
             
-            <Card className="overflow-hidden border-2 border-gray-200 hover:border-red-600 mx-10 sm:mx-0">
+            <Card className="overflow-hidden hover:border-red-600 mx-10 sm:mx-0">
               <CardContent className="p-6 text-center">
                 <div className="bg-red-50 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                   <FiAward className="h-8 w-8 text-red-700" />
@@ -34,7 +34,7 @@ const ValuesComponent = () => {
               </CardContent>
             </Card>
             
-            <Card className="overflow-hidden border-2 border-gray-200 hover:border-red-600 mx-10 sm:mx-0">
+            <Card className="overflow-hidden hover:border-red-600 mx-10 sm:mx-0">
               <CardContent className="p-6 text-center">
                 <div className="bg-red-50 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                   <FiUsers className="h-8 w-8 text-red-700" />
@@ -46,7 +46,7 @@ const ValuesComponent = () => {
               </CardContent>
             </Card>
             
-            <Card className="overflow-hidden border-2 border-gray-200 hover:border-red-600 mx-10 sm:mx-0">
+            <Card className="overflow-hidden hover:border-red-600 mx-10 sm:mx-0">
               <CardContent className="p-6 text-center">
                 <div className="bg-red-50 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                   <FiTarget className="h-8 w-8 text-red-700" />

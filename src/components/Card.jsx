@@ -1,7 +1,7 @@
 import React from "react";
 
 const Card = ({ className, ...props }) => (
-  <div className={`rounded-lg border bg-card border-gray-300 shadow-sm ${className}`} {...props} />
+  <div className={`rounded-lg border-2 border-gray-300 shadow-sm ${className}`} {...props} />
 );
 
 const CardHeader = ({ className, ...props }) => (

@@ -4,7 +4,7 @@ import { ButtonLink } from "../components/Button";
 
 const NotFound = () => {
     return (
-        <div className="min-h-[60vh] flex bg-gray-200 items-center justify-center">
+        <div className="min-h-[60vh] flex items-center justify-center">
             <div className="  px-5 lg:px-20 flex items-center justify-center gap-8">
                 <div className="hidden sm:flex flex-1 self-center">
                     <img

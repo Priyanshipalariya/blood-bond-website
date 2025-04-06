@@ -6,7 +6,7 @@ import { Button,  ButtonContrast } from "./Button";
 const HeroComponent = () =>{
     return(
         <section className="relative bg-red-100">
-        <div className=" py-14 sm:py-12 px-5 md:px-10 lg:px-20">
+        <div className=" py-14 px-5 md:px-10 lg:px-20">
           <div className="flex flex-col md:flex-row mx-auto items-center max-w-6xl md:gap-5 ">
             <div className="md:w-2/3 mb-10 md:mb-0">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">

@@ -1,10 +1,10 @@
 import React from "react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../components/Accordion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/Tabs";
-import { Card, CardContent } from "../components/Card";
 import { FiCheckCircle, FiXCircle, FiClock, FiAlertCircle } from "react-icons/fi";
 import { FaRegHeart } from "react-icons/fa"
 import { CiCalendarDate } from "react-icons/ci"
+import { Card, CardContent } from "../components/card";
 
 const InformationPage = () => {
     return (

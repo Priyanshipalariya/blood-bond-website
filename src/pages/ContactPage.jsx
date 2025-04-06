@@ -25,18 +25,10 @@ const ContactPage = () => {
 
     return (
         <>
-            <section className="py-14 bg-red-100">
-                <div className="text-center px-8 ">
-                    <h1 className="text-4xl font-bold text-gray-900 mb-4">Contact Us</h1>
-                    <p className="text-gray-600 max-w-2xl mx-auto ">
-                        We're here to answer your questions and provide support. Reach out to our team using any of the methods below.
-                    </p>
-                </div>
-            </section>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 py-14 px-5 justify-between ">
+         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 py-6 md:py-10 px-5 justify-between ">
                 <div className="lg:col-span-1" >
-                    <h2 className="text-2xl font-bold text-gray-900 mb-10 text-center">Get in Touch</h2>
+                    <h2 className="text-2xl font-bold text-gray-900 mb-6 md:mb-10 text-center hidden md:block">Get in touch</h2>
+                    <h2 className="text-2xl font-bold text-gray-900 mb-6 md:mb-10 text-center md:hidden">Contact us</h2>
                     <Card>
                         <CardContent className="p-8">
                             <form onSubmit={handleSubmit} className="space-y-6">
@@ -124,8 +116,8 @@ const ContactPage = () => {
                     </Card> 
                 </div>
 
-                 <div className="lg:col-span-2">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-10  text-center">Contact Information</h2> 
+                 <div className="lg:col-span-2 hidden md:block">
+                    <h2 className="text-2xl font-bold text-gray-900 mb-10 text-center">Contact us</h2> 
 
                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12"> 
                          <Card className = "hover:border-red-600 ">

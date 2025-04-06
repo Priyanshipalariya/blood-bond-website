@@ -1,10 +1,6 @@
 import { GiHeartDrop } from "react-icons/gi";
-import { IoCallOutline, IoMailOutline, IoLocationOutline } from "react-icons/io5";
-import { Link } from "react-router";
 
 const Footer = () => {
-
-  const styleForLinks = `text-gray-600 hover:text-red-700 text-xs sm:text-sm hover:font-semibold hover:text-md`
 
   return (
     <footer className="bg-gray-300 px-8 ">

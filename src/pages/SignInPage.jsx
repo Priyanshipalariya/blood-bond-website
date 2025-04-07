@@ -25,6 +25,11 @@ const SignInPage = () => {
     return (
         <div className="max-w-md mx-auto my-10">
             <Card className="py-10">
+                <div className="text-center mb-4">
+                <h3 className="text-2xl text-gray-500 font-semibold">Welcome to 
+                <span className="text-red-700 text-3xl font-bold"> Blood Bond</span>
+                </h3>
+                </div>
                 <CardHeader>
                     <CardTitle className="text-2xl text-center">Sign In</CardTitle>
                     <CardDescription className="text-center text-gray-500">

@@ -1,21 +1,15 @@
-import { useState } from "react";
-import { Button, ButtonLink } from "../components/button";
+import { Button } from "../components/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/card";
 import { Input } from "../components/Input";
 import { RadioGroup, RadioGroupItem } from "../components/Radio";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/SelectComponent";
 import { Checkbox } from "../components/Checkbox";
 import { FaArrowCircleRight } from "react-icons/fa";
-import { format } from "date-fns";
-import { CiCalendarDate } from "react-icons/ci";
 import { FiCheckCircle, FiAlertCircle } from "react-icons/fi";
 import { Link } from "react-router";
 
 
 const DonatePage = () => {
-
-    const [date, setDate] = useState();
-
     const handleSubmit = (event) => {
         console.log('Form submitted')
     };
@@ -31,7 +25,7 @@ const DonatePage = () => {
                         </p>
 
                         <Card className="bg-white">
-                            <CardHeader className="px-6 pt-6">
+                            <CardHeader className="px-6 pt-6 text-center">
                                 <CardTitle>Donor Registration Form</CardTitle>
                                 <CardDescription>
                                     Please provide accurate information to help us match you with donation opportunities.
@@ -39,66 +33,49 @@ const DonatePage = () => {
                             </CardHeader>
                             <CardContent>
                                 <form onSubmit={handleSubmit} className="space-y-6">
+                           
                                     <div className="space-y-4">
-                                        <h3 className="text-lg font-medium">Personal Information</h3>
-
-                                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                                            <div className="space-y-2">
-                                                <label htmlFor="namw">Name</label>
-                                                <Input id="name" placeholder="Enter your name" required />
-                                            </div>
-                                            <div className="space-y-2">
-                                                <label htmlFor="phone">Phone Number</label>
-                                                <Input id="phone" placeholder="Enter your phone number" required />
+                                        <h3 className="text-lg font-medium text-gray-600">Personal Information</h3>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <div className="space-y-2 ">
+                                                <label htmlFor="name">Name</label>
+                                                <Input id="name" placeholder="John Doe" required />
                                             </div>
 
-                                        </div>
 
-                                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                                            <div className="space-y-2">
-                                                <label htmlFor="email">Email</label>
-                                                <Input id="email" type="email" placeholder="Enter your email" required />
-                                            </div>
-
-                                            <div className="space-y-2 lg:space-y-5">
-                                                <label>Gender</label>
-                                                <RadioGroup defaultValue="male" className="space-x-4">
-                                                    <div className="flex items-center space-x-2">
-                                                        <RadioGroupItem value="male" id="male" />
-                                                        <label htmlFor="male">Male</label>
-                                                    </div>
-                                                    <div className="flex items-center space-x-2">
-                                                        <RadioGroupItem value="female" id="female" />
-                                                        <label htmlFor="female">Female</label>
-                                                    </div>
-                                                    <div className="flex items-center space-x-2">
-                                                        <RadioGroupItem value="other" id="other" />
-                                                        <label htmlFor="other">Other</label>
-                                                    </div>
-                                                </RadioGroup>
-                                            </div>
-
-                                        </div>
-
-                                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                                            <div className="space-y-2">
-                                                <label htmlFor="dob">Date of Birth</label>
-
-                                                <button
-                                                    className=" flex h-10 w-full rounded-md border border-gray-400  px-3 py-2  items-center justify-start text-left text-gray-500 "
-                                                >
-
-                                                    <CiCalendarDate className="mr-2 h-4 w-4" />
-                                                    {date ? format(date, "PPP") : "Select your date of birth"}
-                                                </button>
-
-                                            </div>
-
-                                            <div className="space-y-2">
-                                                <label>Blood Type</label>
+                                            <div className="space-y-3">
+                                                <label htmlFor="gender">Gender</label>
                                                 <Select>
-                                                    <SelectTrigger>
-                                                        <SelectValue placeholder="Select your blood type" />
+                                                    <SelectTrigger id="gender">
+                                                        <SelectValue placeholder="Choose your gender" />
+                                                    </SelectTrigger>
+                                                    <SelectContent>
+                                                        <SelectItem value="male">Male</SelectItem>
+                                                        <SelectItem value="female">Female</SelectItem>
+                                                        <SelectItem value="other">Prefer not to say</SelectItem>
+                                                    
+                                                    </SelectContent>
+                                                </Select>
+                                            </div>
+
+                                           
+                                          
+
+                                           
+                                        </div>
+
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div className="space-y-3 ">
+                                                <label htmlFor="dob">Date of Birth</label>
+                                                <Input id="dob" type="date" required />
+                                            </div>
+
+
+                                            <div className="space-y-3">
+                                                <label htmlFor="bloodType">Blood Type</label>
+                                                <Select>
+                                                    <SelectTrigger id="bloodType">
+                                                        <SelectValue placeholder="Blood Type" />
                                                     </SelectTrigger>
                                                     <SelectContent>
                                                         <SelectItem value="A+">A+</SelectItem>
@@ -109,43 +86,62 @@ const DonatePage = () => {
                                                         <SelectItem value="AB-">AB-</SelectItem>
                                                         <SelectItem value="O+">O+</SelectItem>
                                                         <SelectItem value="O-">O-</SelectItem>
-                                                        <SelectItem value="unknown">I don't know</SelectItem>
+                                                        <SelectItem value="unknown">Don't Know</SelectItem>
                                                     </SelectContent>
                                                 </Select>
                                             </div>
-
-
-
                                         </div>
-
-
                                     </div>
 
-                                    <hr className="text-gray-400" />
-
+                                
                                     <div className="space-y-4">
-                                        <h3 className="text-lg font-medium">Address Information</h3>
+                                        <h3 className="text-lg font-medium text-gray-600">Contact Information</h3>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <div className="space-y-2">
+                                                <label htmlFor="email">Email</label>
+                                                <Input id="email" type="email" placeholder="your@email.com" required />
+                                            </div>
+                                            <div className="space-y-2">
+                                                <label htmlFor="phone">Phone Number</label>
+                                                <Input id="phone" type="tel" placeholder="(123) 456-7890" required />
+                                            </div>
+                                        </div>
+                                    </div>
 
+                            
+                                    <div className="space-y-4">
+                                        <h3 className="text-lg font-medium text-gray-600">Address</h3>
                                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                             <div className="space-y-2">
                                                 <label htmlFor="city">City</label>
                                                 <Input id="city" placeholder="City" required />
                                             </div>
                                             <div className="space-y-2">
-                                                <label htmlFor="state">State/Province</label>
-                                                <Input id="state" placeholder="State" required />
+                                                <label htmlFor="state">State</label>
+                                                <Select>
+                                                    <SelectTrigger id="state">
+                                                        <SelectValue placeholder="Select State" />
+                                                    </SelectTrigger>
+                                                    <SelectContent>
+                                                        <SelectItem value="goa">Goa</SelectItem>
+                                                        <SelectItem value="sikkim">Sikkim</SelectItem>
+                                                        <SelectItem value="uk">Uttarakhank</SelectItem>
+                                                    </SelectContent>
+                                                </Select>
                                             </div>
                                             <div className="space-y-2">
-                                                <label htmlFor="zip">Zip/Postal Code</label>
-                                                <Input id="zip" placeholder="Zip Code" required />
+                                                <label htmlFor="zipCode">Zip Code</label>
+                                                <Input id="zipCode" placeholder="12345" required />
                                             </div>
                                         </div>
                                     </div>
 
                                     <hr className="text-gray-400" />
 
+
+
                                     <div className="space-y-4">
-                                        <h3 className="text-lg font-medium">Health Information</h3>
+                                        <h3 className="text-lg font-medium text-gray-600">Donation History</h3>
 
                                         <div className="space-y-2">
                                             <label>Have you donated blood before?</label>
@@ -153,6 +149,7 @@ const DonatePage = () => {
                                                 <div className="flex items-center space-x-2">
                                                     <RadioGroupItem value="yes" id="donated-yes" />
                                                     <label htmlFor="donated-yes">Yes</label>
+
                                                 </div>
                                                 <div className="flex items-center space-x-2">
                                                     <RadioGroupItem value="no" id="donated-no" />
@@ -162,20 +159,54 @@ const DonatePage = () => {
                                         </div>
 
                                         <div className="space-y-2">
-                                            <div className="flex items-center space-x-2">
-                                                <Checkbox id="terms" required />
-                                                <label htmlFor="terms" className="text-sm">
-                                                    I confirm that I'm at least 17 years old, weigh at least 110 pounds, and am in good health.
-                                                </label>
-                                            </div>
-                                            <div className="flex items-center space-x-2">
-                                                <Checkbox id="consent" required />
-                                                <label htmlFor="consent" className="text-sm">
-                                                    I consent to being contacted by Blood Bond for donation opportunities.
-                                                </label>
+                                            <label htmlFor="lastDonation">If yes, when was your last donation? (approximate)</label>
+                                            <Input id="lastDonation" type="date" />
+                                        </div>
+                                    </div>
+
+                                    <div className="space-y-4">
+                                        <h3 className="text-lg font-medium text-gray-600">Preferences</h3>
+                                        <div className="space-y-2">
+                                            <label>How would you like to be contacted?</label>
+                                            <div className="flex flex-col space-y-2">
+                                                <div className="flex items-center space-x-2">
+                                                    <Checkbox id="contact-email" />
+                                                    <label htmlFor="contact-email">Email</label>
+                                                </div>
+                                                <div className="flex items-center space-x-2">
+                                                    <Checkbox id="contact-sms" />
+                                                    <label htmlFor="contact-sms">SMS/Text</label>
+                                                </div>
+                                                <div className="flex items-center space-x-2">
+                                                    <Checkbox id="contact-phone" />
+                                                    <label htmlFor="contact-phone">Phone Call</label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+
+
+
+
+
+
+
+
+                                    <div className="space-y-4">
+                                        <div className="flex items-center space-x-2">
+                                            <Checkbox id="terms" required />
+                                            <label htmlFor="terms" className="text-sm">
+                                                I confirm that I'm at least 17 years old, weigh at least 110 pounds, and am in good health.
+                                            </label>
+                                        </div>
+                                        <div className="flex items-center space-x-2">
+                                            <Checkbox id="consent" required />
+                                            <label htmlFor="consent" className="text-sm">
+                                                I consent to being contacted by Blood Bond for donation opportunities.
+                                            </label>
+                                        </div>
+                                    </div>
+
 
                                     <Button type="submit" className="w-full">
                                         Register as Donor
@@ -241,7 +272,7 @@ const DonatePage = () => {
 
                             <div className=" items-center border-t pt-4 flex flex-row gap-5">
                                 <p className="text-red-700 text-sm">Learn more about eligibility requirements and donation process</p>
-                                <Link to="information  ">
+                                <Link to="/information  ">
                                     <FaArrowCircleRight className="text-red-700 text-2xl" />
                                 </Link>
                             </div>

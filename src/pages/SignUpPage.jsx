@@ -15,6 +15,7 @@ const SignUpPage = () => {
     bloodType: "",
     agreeToTerms: false,
   });
+  
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -47,18 +48,18 @@ console.log("Please make sure your passwords match.")
   };
 
   return (
-      <div className="max-w-md mx-auto py-8">
-        <Card>
+      <div className="max-w-md mx-auto my-10">
+        <Card className="py-10">
           <CardHeader>
             <CardTitle className="text-2xl text-center">Create Account</CardTitle>
-            <CardDescription className="text-center">
+            <CardDescription className="text-center text-gray-500">
               Join our blood donation community
             </CardDescription>
           </CardHeader>
           <form onSubmit={handleSubmit}>
             <CardContent className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="fullName">Full Name</Label>
+                <label htmlFor="fullName">Full Name</label>
                 <Input
                   id="fullName"
                   name="fullName"
@@ -70,7 +71,7 @@ console.log("Please make sure your passwords match.")
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+                <label htmlFor="email">Email</label>
                 <Input
                   id="email"
                   name="email"
@@ -83,7 +84,7 @@ console.log("Please make sure your passwords match.")
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="bloodType">Blood Type</Label>
+                <label htmlFor="bloodType">Blood Type</label>
                 <Select onValueChange={handleBloodTypeChange} value={formData.bloodType}>
                   <SelectTrigger>
                     <SelectValue placeholder="Select your blood type" />
@@ -102,7 +103,7 @@ console.log("Please make sure your passwords match.")
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
+                <label htmlFor="password">Password</label>
                 <Input
                   id="password"
                   name="password"
@@ -114,7 +115,7 @@ console.log("Please make sure your passwords match.")
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="confirmPassword">Confirm Password</Label>
+                <label htmlFor="confirmPassword">Confirm Password</label>
                 <Input
                   id="confirmPassword"
                   name="confirmPassword"
@@ -131,25 +132,25 @@ console.log("Please make sure your passwords match.")
                   checked={formData.agreeToTerms}
                   onCheckedChange={handleCheckboxChange}
                 />
-                <Label htmlFor="terms" className="text-sm font-normal">
+                <label htmlFor="terms" className="text-sm font-normal">
                   I agree to the{" "}
-                  <Link to="/terms" className="text-blood hover:underline">
+                  <Link to="/terms" className="text-red-600 hover:underline">
                     terms and conditions
                   </Link>
-                </Label>
+                </label>
               </div>
             </CardContent>
             <CardFooter className="flex flex-col space-y-2">
               <Button 
                 type="submit" 
-                className="w-full bg-blood hover:bg-blood-dark" 
+                className="w-full"
                 disabled={isLoading}
               >
                 {isLoading ? "Creating account..." : "Sign Up"}
               </Button>
               <div className="text-center text-sm mt-2">
                 Already have an account?{" "}
-                <Link to="/signin" className="text-blood hover:underline">
+                <Link to="/signin" className="text-red-600 hover:underline">
                   Sign in
                 </Link>
               </div>

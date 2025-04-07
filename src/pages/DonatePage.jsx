@@ -71,7 +71,7 @@ const DonatePage = () => {
                                             </div>
 
 
-                                            <div className="space-y-3">
+                                            <div className="space-y-3 pb-2">
                                                 <label htmlFor="bloodType">Blood Type</label>
                                                 <Select>
                                                     <SelectTrigger id="bloodType">
@@ -92,7 +92,7 @@ const DonatePage = () => {
                                             </div>
                                         </div>
                                     </div>
-
+                                    <hr className="text-gray-200" />
                                 
                                     <div className="space-y-4">
                                         <h3 className="text-lg font-medium text-gray-600">Contact Information</h3>
@@ -101,14 +101,14 @@ const DonatePage = () => {
                                                 <label htmlFor="email">Email</label>
                                                 <Input id="email" type="email" placeholder="your@email.com" required />
                                             </div>
-                                            <div className="space-y-2">
+                                            <div className="space-y-2 pb-2">
                                                 <label htmlFor="phone">Phone Number</label>
                                                 <Input id="phone" type="tel" placeholder="(123) 456-7890" required />
                                             </div>
                                         </div>
                                     </div>
 
-                            
+                                    <hr className="text-gray-200" />
                                     <div className="space-y-4">
                                         <h3 className="text-lg font-medium text-gray-600">Address</h3>
                                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -129,14 +129,14 @@ const DonatePage = () => {
                                                     </SelectContent>
                                                 </Select>
                                             </div>
-                                            <div className="space-y-2">
+                                            <div className="space-y-2 pb-2">
                                                 <label htmlFor="zipCode">Zip Code</label>
                                                 <Input id="zipCode" placeholder="12345" required />
                                             </div>
                                         </div>
                                     </div>
 
-                                    <hr className="text-gray-400" />
+                                    <hr className="text-gray-200" />
 
 
 
@@ -158,11 +158,13 @@ const DonatePage = () => {
                                             </RadioGroup>
                                         </div>
 
-                                        <div className="space-y-2">
+                                        <div className="space-y-2 pb-2">
                                             <label htmlFor="lastDonation">If yes, when was your last donation? (approximate)</label>
                                             <Input id="lastDonation" type="date" />
                                         </div>
                                     </div>
+
+                                    <hr className="text-gray-200" />
 
                                     <div className="space-y-4">
                                         <h3 className="text-lg font-medium text-gray-600">Preferences</h3>

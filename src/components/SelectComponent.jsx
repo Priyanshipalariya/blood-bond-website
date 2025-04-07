@@ -10,7 +10,7 @@ const SelectValue = SelectPrimitive.Value;
 
 const SelectTrigger = (props) => (
   <SelectPrimitive.Trigger
-    className="flex h-10 w-full items-center justify-between rounded-md border bg-white px-3 py-2 text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    className="flex h-10 w-full items-center justify-between rounded-md border border-gray-400 bg-white px-3 py-2 text-md text-gray-500 focus:border-black"
     {...props}
   >
     {props.children}
@@ -23,7 +23,7 @@ const SelectTrigger = (props) => (
 const SelectContent = ({ children, position = "popper", ...props }) => (
   <SelectPrimitive.Portal>
     <SelectPrimitive.Content
-      className="relative my-1 z-50 bg-gray-100 max-h-60 min-w-[8rem] overflow-auto rounded-md border shadow-md"
+      className="relative my-1 z-50 bg-gray-50 max-h-60 min-w-[8rem] overflow-auto rounded-md border shadow-md"
       position={position}hite
       {...props}
     >

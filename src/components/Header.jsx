@@ -1,7 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
 import { GiHamburgerMenu, GiHeartDrop } from "react-icons/gi";
 import { ImCross } from "react-icons/im";
 import { Link, useLocation } from "react-router";
+import { FaUserCircle, } from "react-icons/fa";
+//import { CiLogin, CiLogout, CiSettings } from "react-icons/ci";
+
 
 const Navbar = () => {
   const navLinks = [
@@ -14,7 +18,18 @@ const Navbar = () => {
 
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
   const pathname = useLocation().pathname;
+
+  const toggleLogin = () => {
+    setIsLoggedIn(!isLoggedIn);
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    navigate('/');
+  };
 
 
   return (
@@ -46,6 +61,12 @@ const Navbar = () => {
             >{label}
             </Link>
           ))}
+
+
+
+          <div>
+            <FaUserCircle className=" rounded-full text-red-700 text-3xl" />
+          </div>
         </nav>
       </div>
 

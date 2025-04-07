@@ -10,26 +10,46 @@ import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import SignUpPage from "./pages/SignUpPage";
 
 const App = () => {
-  return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-      <div className="flex-grow">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/donate" element={<DonatePage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/request" element={<RequestPage />} />
-          <Route path="/information" element={<InformationPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </div>
-      <Footer />
-    </div>
 
+  // const [isUserLoggedIn, setIsUserLoggedIn] = React.useState(false);
+
+  // React.useEffect(() => {
+  //   const userKey = localStorage.getItem('userKey');
+  //   if (userKey) {
+  //     setIsUserLoggedIn(true);
+  //   } else {
+  //     setIsUserLoggedIn(false);
+  //   }
+  // }, []);
+  return (
+    <>
+       <Routes>
+        <Route path="/" element={<HomePage />} >
+          {/* <Route path="/landing" /> */}
+        </Route>
+        <Route path="/signup" element={<SignUpPage />} />
+
+      </Routes>
+      {/* <div className="flex flex-col min-h-screen">
+        <Header />
+        <div className="flex-grow">
+          <Routes>
+            
+            <Route path="/donate" element={<DonatePage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/request" element={<RequestPage />} />
+            <Route path="/information" element={<InformationPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
+        <Footer />
+      </div> */}
+    </>
 
   )
 }

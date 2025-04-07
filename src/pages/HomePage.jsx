@@ -5,6 +5,13 @@ import ActionComponent from "../components/ActionComponent";
 import BloodInfoComponent from "../components/BloodInfoComponent";
 
 const HomePage = () => {
+    React.useEffect(() => {
+        const userKey = localStorage.getItem('userKey') || false;
+        if (!userKey) {
+            window.location.href = '/signup';
+        }
+    }, []);
+
     return(
         <div >
             <HeroComponent/>

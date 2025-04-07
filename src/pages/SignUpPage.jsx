@@ -10,8 +10,8 @@ const SignUpPage = () => {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
-    password: "",
-    confirmPassword: "",
+    phone:"",
+    dob:"",
     bloodType: "",
     agreeToTerms: false,
   });
@@ -33,11 +33,6 @@ const SignUpPage = () => {
   };
 
   const handleSubmit = (e) => {
-    
-    if (formData.password !== formData.confirmPassword) {
-console.log("Please make sure your passwords match.")
-      return;
-    }
 
     if (!formData.agreeToTerms) {
       console.log("You must agree to the terms and conditions.")
@@ -74,6 +69,19 @@ console.log("Please make sure your passwords match.")
                   required
                 />
               </div>
+
+              <div className="space-y-2">
+                <label htmlFor="phone">Contact No.</label>
+                <Input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  placeholder="1 234 567 890"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
               
               <div className="space-y-2">
                 <label htmlFor="email">Email</label>
@@ -87,6 +95,20 @@ console.log("Please make sure your passwords match.")
                   required
                 />
               </div>
+
+              <div className="space-y-2">
+                <label htmlFor="dob">Date of Birth</label>
+                <Input
+                  id="dob"
+                  name="dob"
+                  type="date"
+                  placeholder="DD-MM-YYYY"
+                  value={formData.dob}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
               
               <div className="space-y-2">
                 <label htmlFor="bloodType">Blood Type</label>
@@ -105,30 +127,6 @@ console.log("Please make sure your passwords match.")
                     <SelectItem value="O-">O-</SelectItem>
                   </SelectContent>
                 </Select>
-              </div>
-              
-              <div className="space-y-2">
-                <label htmlFor="password">Password</label>
-                <Input
-                  id="password"
-                  name="password"
-                  type="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              
-              <div className="space-y-2">
-                <label htmlFor="confirmPassword">Confirm Password</label>
-                <Input
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  type="password"
-                  value={formData.confirmPassword}
-                  onChange={handleChange}
-                  required
-                />
               </div>
               
               <div className="flex items-center space-x-2">

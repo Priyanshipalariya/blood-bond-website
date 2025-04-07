@@ -5,8 +5,8 @@ import { Input } from "../components/Input";
 import { Button } from "../components/Button";
 
 const SignInPage = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [phone, setPhone] = useState("");
+    const [otp, setOtp] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
@@ -18,7 +18,7 @@ const SignInPage = () => {
             console.log("You have successfully signed in!")
             navigate("/");
         } else {
-            console.log("Please enter both email and password.")
+            console.log("Please enter both number and otp.")
         }
     }
 
@@ -39,28 +39,23 @@ const SignInPage = () => {
                 <form onSubmit={handleSubmit}>
                     <CardContent className="space-y-4">
                         <div className="space-y-2">
-                            <label htmlFor="email ">Email</label>
+                            <label htmlFor="phone">Contact No.</label>
                             <Input
-                                id="email"
-                                type="email"
-                                placeholder="name@example.com"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                id="phone"
+                                type="tel"
+                                placeholder="1 234 567 890"
+                                value={phone}
+                                onChange={(e) => setPhone(e.target.value)}
                                 required
                             />
                         </div>
                         <div className="space-y-2">
-                            <div className="flex items-center justify-between">
-                                <label htmlFor="password">Password</label>
-                                <Link to="/forgot-password" className="text-sm text-red-600 hover:underline">
-                                    Forgot password?
-                                </Link>
-                            </div>
+               <label htmlFor="otp">Otp</label>
                             <Input
-                                id="password"
-                                type="password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
+                                id="otp"
+                                type="text"
+                                value={otp}
+                                onChange={(e) => setOtp(e.target.value)}
                                 required
                             />
                         </div>

@@ -4,7 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/Tabs";
 import { FiCheckCircle, FiXCircle, FiClock, FiAlertCircle } from "react-icons/fi";
 import { FaRegHeart } from "react-icons/fa"
 import { CiCalendarDate } from "react-icons/ci"
-import { Card, CardContent } from "../components/card";
+import { Card, CardContent } from "../components/Card";
 
 const InformationPage = () => {
     return (

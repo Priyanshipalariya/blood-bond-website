@@ -1,9 +1,9 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/Card";
 import { Input, TextArea } from "../components/Input";
 import { RadioGroup, RadioGroupItem } from "../components/Radio";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/SelectComponent";
 import {FiAlertCircle } from "react-icons/fi";
-import { Button } from "../components/button";
+import { Button } from "../components/Button";
 
 const RequestPage = () => {
 
@@ -33,42 +33,14 @@ const RequestPage = () => {
                 <CardContent>
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="space-y-4">
-                      <h3 className="text-lg font-medium text-gray-600">Patient Information</h3>
+                      <h3 className="text-lg font-medium text-gray-600">Blood Information</h3>
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="space-y-2">
-                          <label htmlFor="patientName">Patient's Name</label>
-                          <Input id="patientName" placeholder="Enter patient's name" required />
-                        </div>
-                        <div className="space-y-2">
-                          <label htmlFor="patientAge">Patient's Age</label>
-                          <Input id="patientAge" type="number" placeholder="Enter patient's age" required />
-                        </div>
-                      </div>
-
                       <div className="space-y-2">
-                        <label>Patient's Gender</label>
-                        <RadioGroup defaultValue="male" className="flex space-x-4">
-                          <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="male" id="patient-male" />
-                            <label htmlFor="patient-male">Male</label>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="female" id="patient-female" />
-                            <label htmlFor="patient-female">Female</label>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="other" id="patient-other" />
-                            <label htmlFor="patient-other">Other</label>
-                          </div>
-                        </RadioGroup>
-                      </div>
-
-                      <div className="space-y-2">
-                        <label>Blood Type Needed</label>
+                        <label>Patient's Blood Group</label>
                         <Select required>
                           <SelectTrigger>
-                            <SelectValue placeholder="Select blood type needed" />
+                            <SelectValue placeholder="Select blood group" />
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value="A+">A+</SelectItem>
@@ -83,7 +55,8 @@ const RequestPage = () => {
                         </Select>
                       </div>
 
-                      <div className="space-y-2 pb-2">
+
+                         <div className="space-y-2 pb-2">
                         <label>Units Required</label>
                         <Select required>
                           <SelectTrigger>
@@ -98,6 +71,8 @@ const RequestPage = () => {
                           </SelectContent>
                         </Select>
                       </div>
+</div>
+                     
                     </div>
 
                     <hr className="text-gray-200 mt" />
@@ -116,15 +91,12 @@ const RequestPage = () => {
                           <Input id="hospitalAddress" placeholder="Enter hospital address" required />
                         </div>
                         <div className="space-y-2">
-                          <label htmlFor="city">City</label>
-                          <Input id="city" placeholder="Enter city" required />
+                          <label htmlFor="zip">Pincode</label>
+                          <Input id="zip" placeholder="Enter Pincode" required />
                         </div>
                       </div>
 
-                      <div className="space-y-2 py-2">
-                        <label htmlFor="requiredBy">Required By</label>
-                        <Input id="requiredBy" type="date" required />
-                      </div>
+                  
                     </div>
 
                     <hr className="text-gray-200" />
@@ -137,21 +109,12 @@ const RequestPage = () => {
                           <label htmlFor="requesterName">Your Name</label>
                           <Input id="requesterName" placeholder="Enter your name" required />
                         </div>
-                        <div className="space-y-2">
-                          <label htmlFor="relation">Relation to Patient</label>
-                          <Input id="relation" placeholder="E.g. Family member, friend, etc." required />
-                        </div>
-                      </div>
 
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-2">
                           <label htmlFor="phone">Contact Phone</label>
                           <Input id="phone" placeholder="Enter your phone number" required />
                         </div>
-                        <div className="space-y-2">
-                          <label htmlFor="email">Email</label>
-                          <Input id="email" type="email" placeholder="Enter your email" required />
-                        </div>
+                        
                       </div>
 
                       <div className="space-y-2">

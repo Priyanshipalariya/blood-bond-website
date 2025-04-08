@@ -1,5 +1,5 @@
-import { Button } from "../components/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/card";
+import { Button } from "../components/Button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/Card";
 import { Input } from "../components/Input";
 import { RadioGroup, RadioGroupItem } from "../components/Radio";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/SelectComponent";
@@ -33,7 +33,7 @@ const DonatePage = () => {
                             </CardHeader>
                             <CardContent>
                                 <form onSubmit={handleSubmit} className="space-y-6">
-                           
+
                                     <div className="space-y-4">
                                         <h3 className="text-lg font-medium text-gray-600">Personal Information</h3>
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -53,19 +53,19 @@ const DonatePage = () => {
                                                         <SelectItem value="male">Male</SelectItem>
                                                         <SelectItem value="female">Female</SelectItem>
                                                         <SelectItem value="other">Prefer not to say</SelectItem>
-                                                    
+
                                                     </SelectContent>
                                                 </Select>
                                             </div>
 
-                                           
-                                          
 
-                                           
+
+
+
                                         </div>
 
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        <div className="space-y-3 ">
+                                            <div className="space-y-3 ">
                                                 <label htmlFor="dob">Date of Birth</label>
                                                 <Input id="dob" type="date" required />
                                             </div>
@@ -93,7 +93,7 @@ const DonatePage = () => {
                                         </div>
                                     </div>
                                     <hr className="text-gray-200" />
-                                
+
                                     <div className="space-y-4">
                                         <h3 className="text-lg font-medium text-gray-600">Contact Information</h3>
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -111,28 +111,17 @@ const DonatePage = () => {
                                     <hr className="text-gray-200" />
                                     <div className="space-y-4">
                                         <h3 className="text-lg font-medium text-gray-600">Address</h3>
-                                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                            <div className="space-y-2">
-                                                <label htmlFor="city">City</label>
-                                                <Input id="city" placeholder="City" required />
-                                            </div>
-                                            <div className="space-y-2">
-                                                <label htmlFor="state">State</label>
-                                                <Select>
-                                                    <SelectTrigger id="state">
-                                                        <SelectValue placeholder="Select State" />
-                                                    </SelectTrigger>
-                                                    <SelectContent>
-                                                        <SelectItem value="goa">Goa</SelectItem>
-                                                        <SelectItem value="sikkim">Sikkim</SelectItem>
-                                                        <SelectItem value="uk">Uttarakhank</SelectItem>
-                                                    </SelectContent>
-                                                </Select>
-                                            </div>
-                                            <div className="space-y-2 pb-2">
+                                        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+
+                                            <div className="space-y-2 pb-2 md:col-span-1">
                                                 <label htmlFor="zipCode">Zip Code</label>
                                                 <Input id="zipCode" placeholder="12345" required />
                                             </div>
+                                            <div className="space-y-2 md:col-span-2">
+                                                <label htmlFor="city">City</label>
+                                                <Input id="city" placeholder="City" required />
+                                            </div>
+
                                         </div>
                                     </div>
 

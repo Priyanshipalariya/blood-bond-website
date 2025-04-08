@@ -3,81 +3,94 @@ import { Link, useNavigate } from "react-router";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../components/Card";
 import { Input } from "../components/Input";
 import { Button } from "../components/Button";
+import { useAuth } from "../Context/Authcontext";
+
 
 const SignInPage = () => {
-    const [phone, setPhone] = useState("");
-    const [otp, setOtp] = useState("");
-    const [isLoading, setIsLoading] = useState(false);
+    const [loginEmail, setLoginEmail] = useState("");
+    const [loginPassword, setLoginPassword] = useState("");
+    const [isLoginLoading, setIsLoginLoading] = useState(false);
+
     const navigate = useNavigate();
-
-    const handleSubmit = (event) => {
-        console.log("Login Successful")
-        setIsLoading(true);
-
-        if (email && password) {
-            console.log("You have successfully signed in!")
-            navigate("/");
-        } else {
-            console.log("Please enter both number and otp.")
+    const { login, signup } = useAuth();
+  
+    const handleLoginSubmit = async (e) => {
+      e.preventDefault();
+      setIsLoginLoading(true);
+  
+      try {
+        const success = await login(loginEmail, loginPassword);
+  
+        if (success) {
+          console.log("You have successfully signed in!")
+  
+          navigate("/home")
         }
-    }
+        else {
+          console.log("Invalid email or password.")
+        }
+      }
+      catch (error) {
+        console.log("An error occurred during sign in.")
+      }
+      finally {
+        setIsLoginLoading(false);
+      }
+    };
 
     return (
-        <div className="max-w-md mx-auto my-10">
-            <Card className="py-10">
-                <div className="text-center mb-4">
-                <h3 className="text-2xl text-gray-500 font-semibold">Welcome to 
-                <span className="text-red-700 text-3xl font-bold"> Blood Bond</span>
-                </h3>
-                </div>
-                <CardHeader>
-                    <CardTitle className="text-2xl text-center">Sign In</CardTitle>
-                    <CardDescription className="text-center text-gray-500">
-                        Enter your credentials to access your account
-                    </CardDescription>
-                </CardHeader>
-                <form onSubmit={handleSubmit}>
-                    <CardContent className="space-y-4">
-                        <div className="space-y-2">
-                            <label htmlFor="phone">Contact No.</label>
-                            <Input
-                                id="phone"
-                                type="tel"
-                                placeholder="1 234 567 890"
-                                value={phone}
-                                onChange={(e) => setPhone(e.target.value)}
-                                required
-                            />
-                        </div>
-                        <div className="space-y-2">
-               <label htmlFor="otp">Otp</label>
-                            <Input
-                                id="otp"
-                                type="text"
-                                value={otp}
-                                onChange={(e) => setOtp(e.target.value)}
-                                required
-                            />
-                        </div>
-                    </CardContent>
-                    <CardFooter className="flex flex-col space-y-4">
-                        <Button
-                            type="submit"
-                            className="w-full"
-                            disabled={isLoading}
-                        >
-                            {isLoading ? "Signing in..." : "Sign In"}
-                        </Button>
-                        <div className="text-center text-sm">
-                            Don't have an account?{" "}
-                            <Link to="/signup" className="text-red-600 hover:underline">
-                                Sign up
-                            </Link>
-                        </div>
-                    </CardFooter>
-                </form>
-            </Card>
-        </div>
+        <div className="md:w-1/2 flex items-center justify-center bg-red-100">
+      <Card className="py-10 px-8 mx-5 max-w-2xl bg-white">
+
+        <CardHeader>
+          <CardTitle className="text-2xl text-center">Welcome Back !</CardTitle>
+          <CardDescription className="text-center text-gray-500">
+            Enter the details to access your account
+          </CardDescription>
+        </CardHeader>
+        <form onSubmit={handleLoginSubmit}>
+          <CardContent className="space-y-4">
+            <div className="space-y-2">
+              <label htmlFor="email">Email</label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="name@example.com"
+                value={loginEmail}
+                onChange={(e) => setLoginEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <label htmlFor="password">Password</label>
+              <Input
+                id="password"
+                type="password"
+                value={loginPassword}
+                onChange={(e) => setLoginPassword(e.target.value)}
+                required
+              />
+            </div>
+          </CardContent>
+
+          <CardFooter className="flex flex-col space-y-4">
+            <Button
+              type="submit"
+              className="w-full"
+              disabled={isLoginLoading}
+            >
+              {isLoginLoading ? "Signing in..." : "Sign In"}
+            </Button>
+            <div className="text-center text-sm">
+              Don't have an account?{" "}
+              <Link to="/signup" className="text-red-600 hover:underline">
+                Sign up
+              </Link>
+            </div>
+          </CardFooter>
+        </form>
+      </Card>
+      </div>
 
     );
 };

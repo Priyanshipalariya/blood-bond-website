@@ -1,10 +1,4 @@
-import { useState } from "react";
-import { Route, useNavigate } from "react-router";
-import SignInPage from "./SignInPage";
-import { Routes } from "react-router";
-import SignUpPage from "./SignUpPage";
-
-const AuthPage = () => {
+const AuthPage = ({children}) => {
   return (
     <div className="md:flex min-h-screen bg-red-100">
 
@@ -15,14 +9,10 @@ const AuthPage = () => {
         <img className="max-w-md" src="https://res.cloudinary.com/dfelqef5x/image/upload/v1744085333/km3mzvg8kgp6du0sxfk0.png " />
       </div>
 
-      <div className = "md:w-1/2 md:flex items-center justify-center overflow-y-auto">
-      <div className="w-full">
-      <Routes>
-        <Route path="*" element={<SignInPage />} />
-        <Route path="/signup" element={<SignUpPage />} />
-
-      </Routes>
-      </div>
+      <div className="md:w-1/2 md:flex items-center justify-center overflow-y-auto">
+        <div className="w-full">
+          {children}
+        </div>
       </div>
 
 

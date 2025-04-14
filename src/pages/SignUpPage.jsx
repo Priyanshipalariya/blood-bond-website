@@ -1,0 +1,235 @@
+import { useState } from "react";
+import { useAuth } from "../Context/Authcontext";
+import { Link, useNavigate } from "react-router";
+import { Button } from "../components/Button";
+import { Input } from "../components/Input";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../components/Card";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/SelectComponent";
+import { Checkbox } from "../components/Checkbox";
+import { GiHeartDrop } from "react-icons/gi";
+import AuthPage from "./AuthPage";
+
+const SignUpPage = () => {
+
+  const [signupData, setSignupData] = useState({
+    fullName: "",
+    phone: "",
+    dob: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    bloodType: "",
+    agreeToTerms: false,
+  });
+  const [isSignupLoading, setIsSignupLoading] = useState(false);
+
+
+  const navigate = useNavigate();
+  const { signup } = useAuth();
+
+
+
+  const handleSignupChange = (e) => {
+    const { name, value } = e.target;
+    setSignupData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleBloodTypeChange = (value) => {
+    setSignupData((prev) => ({ ...prev, bloodType: value }));
+  };
+
+  const handleCheckboxChange = (checked) => {
+    setSignupData((prev) => ({ ...prev, agreeToTerms: checked }));
+  };
+
+  const handleSignupSubmit = async (e) => {
+    e.preventDefault();
+
+    if (signupData.password !== signupData.confirmPassword) {
+
+      console.log("Please make sure your passwords match.")
+
+      return;
+    }
+
+    if (!signupData.agreeToTerms) {
+      console.log("You must agree to the terms and conditions.")
+
+      return;
+    }
+
+    setIsSignupLoading(true);
+
+    try {
+      const success = await signup(signupData.email, signupData.password, {
+        name: signupData.fullName
+      });
+
+      if (success) {
+        console.log("You have successfully created an account!")
+        navigate("/home");
+      } else {
+        console.log("This email may already be registered.")
+      }
+    }
+    catch (error) {
+
+      console.log("An error occurred during sign up.")
+    }
+    finally {
+      setIsSignupLoading(false);
+    }
+  };
+
+  return (
+    <AuthPage>
+      <div className="flex flex-col min-h-screen justify-center mx-8 py-10">
+
+        <div className="md:hidden text-center mb-7">
+          <div className="flex items-center justify-center gap-2">
+            <GiHeartDrop className="h-10 w-10 text-red-700" />
+            <h1 className="text-red-700 text-4xl font-bold"> Blood Bond</h1>
+          </div>
+          <p className="text-red-700 mt-2">- where hope begins and lives are saved</p>
+        </div>
+
+        <div className="flex items-center justify-center bg-red-100">
+          <Card className="py-10 px-8 md:px-4 bg-white w-full max-w-lg mx-auto">
+
+            <CardHeader>
+              <CardTitle className="text-2xl text-center">Welcome</CardTitle>
+              <CardDescription className="text-gray-500 text-center">
+                Join our blood donation community
+              </CardDescription>
+            </CardHeader>
+            <form onSubmit={handleSignupSubmit}>
+              <CardContent className="space-y-4">
+                <div className="space-y-2">
+                  <label htmlFor="fullName">Full Name</label>
+                  <Input
+                    id="fullName"
+                    name="fullName"
+                    placeholder="John Doe"
+                    value={signupData.fullName}
+                    onChange={handleSignupChange}
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="phone">Contact Number</label>
+                  <Input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    placeholder="(111) 234 5678"
+                    value={signupData.phone}
+                    onChange={handleSignupChange}
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="email">Email</label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="name@example.com"
+                    value={signupData.email}
+                    onChange={handleSignupChange}
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="dob">Date of Birth</label>
+                  <Input
+                    id="dob"
+                    name="dob"
+                    type="datel"
+                    placeholder="DD-MM-YYYY"
+                    value={signupData.dob}
+                    onChange={handleSignupChange}
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="bloodType">Blood Type</label>
+                  <Select onValueChange={handleBloodTypeChange} value={signupData.bloodType}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select your blood type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="A+">A+</SelectItem>
+                      <SelectItem value="A-">A-</SelectItem>
+                      <SelectItem value="B+">B+</SelectItem>
+                      <SelectItem value="B-">B-</SelectItem>
+                      <SelectItem value="AB+">AB+</SelectItem>
+                      <SelectItem value="AB-">AB-</SelectItem>
+                      <SelectItem value="O+">O+</SelectItem>
+                      <SelectItem value="O-">O-</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="password">Password</label>
+                  <Input
+                    id="password"
+                    name="password"
+                    type="password"
+                    value={signupData.password}
+                    onChange={handleSignupChange}
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="confirmPassword">Confirm Password</label>
+                  <Input
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    type="password"
+                    value={signupData.confirmPassword}
+                    onChange={handleSignupChange}
+                    required
+                  />
+                </div>
+
+                <div className="flex items-center space-x-2">
+                  <Checkbox
+                    id="terms"
+                    checked={signupData.agreeToTerms}
+                    onCheckedChange={handleCheckboxChange}
+                  />
+                  <label htmlFor="terms" className="text-sm font-normal">
+                    I agree to the terms and conditions
+                  </label>
+                </div>
+              </CardContent>
+              <CardFooter className="flex flex-col space-y-2">
+                <Button
+                  type="submit"
+                  className="w-full bg-blood hover:bg-blood-dark"
+                  disabled={isSignupLoading}
+                >
+                  {isSignupLoading ? "Creating account..." : "Create Account"}
+                </Button>
+                <div className="text-center text-sm mt-2">
+                  Already have an account?{" "}
+                  <Link to="/login" className="text-red-600 hover:underline">
+                    Sign In
+                  </Link>
+                </div>
+              </CardFooter>
+            </form>
+          </Card>
+        </div>
+      </div>
+    </AuthPage>
+  );
+};
+
+export default SignUpPage;

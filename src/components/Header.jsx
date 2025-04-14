@@ -8,8 +8,8 @@ import { FaUserCircle, } from "react-icons/fa";
 const Navbar = () => {
   const navLinks = [
     { path: "/home", label: "Home" },
-    { path: "/donate", label: "Donate" },
-    { path: "/request", label: "Request" },
+    { path: "/register", label: "Register as Donor" },
+    { path: "/request", label: "Find Donor" },
     { path: "/about", label: "About" },
     { path: "/contact", label: "Contact" }
   ];
@@ -49,9 +49,9 @@ const Navbar = () => {
             </Link>
           ))}
 
-          <div>
+          {/* <div>
             <FaUserCircle className=" rounded-full text-red-700 text-3xl" />
-          </div>
+          </div> */}
         </nav>
       </div>
 

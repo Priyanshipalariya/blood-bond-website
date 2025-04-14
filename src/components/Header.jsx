@@ -2,12 +2,14 @@ import { useState } from "react";
 import { GiHamburgerMenu, GiHeartDrop } from "react-icons/gi";
 import { ImCross } from "react-icons/im";
 import { Link, useLocation } from "react-router";
+import { FaUserCircle, } from "react-icons/fa";
+
 
 const Navbar = () => {
   const navLinks = [
-    { path: "/", label: "Home" },
-    { path: "/donate", label: "Donate" },
-    { path: "/request", label: "Request" },
+    { path: "/home", label: "Home" },
+    { path: "/register", label: "Register as Donor" },
+    { path: "/request", label: "Find Donor" },
     { path: "/about", label: "About" },
     { path: "/contact", label: "Contact" }
   ];
@@ -46,6 +48,10 @@ const Navbar = () => {
             >{label}
             </Link>
           ))}
+
+          {/* <div>
+            <FaUserCircle className=" rounded-full text-red-700 text-3xl" />
+          </div> */}
         </nav>
       </div>
 

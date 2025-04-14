@@ -26,7 +26,7 @@ const SignInPage = () => {
       if (success) {
         console.log("You have successfully signed in!")
 
-        navigate("/home")
+        navigate("/")
       }
       else {
         console.log("Invalid email or password.")

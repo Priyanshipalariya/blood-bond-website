@@ -1,8 +1,8 @@
 import React from "react";
-import { Navigate } from "react-router";
+// import { Navigate } from "react-router";
 import { Route, Routes } from "react-router";
 import HomePage from "./pages/HomePage";
-import DonatePage from "./pages/DonatePage";
+// import DonatePage from "./pages/DonatePage";
 import RegisterPage from "./pages/RegisterPage";
 import RequestPage from "./pages/RequestPage";
 import InformationPage from "./pages/InformationPage";
@@ -25,8 +25,8 @@ const App = () => {
         <Route path="/signup" element={<SignUpPage />} />
         <Route element={<ProtectedRoute />}> */}
         <Route element={<Layout />}>
-          <Route path="/" element={<Navigate to="/home" replace={true} />} />
-          <Route path="/home" element={<HomePage />} />
+          {/* <Route path="/" element={<Navigate to="/home" replace={true} />} /> */}
+          <Route path="/" element={<HomePage />} />
           {/* <Route path="/donate" element={<DonatePage />} /> */}
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/request" element={<RequestPage />} />

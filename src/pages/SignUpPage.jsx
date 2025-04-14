@@ -67,7 +67,7 @@ const SignUpPage = () => {
 
       if (success) {
         console.log("You have successfully created an account!")
-        navigate("/home");
+        navigate("/");
       } else {
         console.log("This email may already be registered.")
       }

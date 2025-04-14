@@ -7,7 +7,7 @@ import { FaUserCircle, } from "react-icons/fa";
 
 const Navbar = () => {
   const navLinks = [
-    { path: "/home", label: "Home" },
+    { path: "/", label: "Home" },
     { path: "/register", label: "Register as Donor" },
     { path: "/request", label: "Find Donor" },
     { path: "/about", label: "About" },

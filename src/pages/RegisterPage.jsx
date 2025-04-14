@@ -196,7 +196,7 @@ const RegisterPage = () => {
     };
 
     return (
-        <div className="min-h-[calc(100vh-14rem)] lg:min-h-[calc(100vh-12rem)] bg-red-50 flex items-center justify-center py-4 sm:py-8 md:py-12 px-2 sm:px-4 lg:px-8">
+        <div className="min-h-[calc(100vh-14rem)] lg:min-h-[calc(100vh-12rem)] bg-red-200 flex items-center justify-center py-4 sm:py-8 md:py-12 px-2 sm:px-4 lg:px-8">
             <ToastContainer
                 position="top-right"
                 autoClose={5000}

@@ -18,9 +18,11 @@ export const db = getFirestore(firebaseApp);
 // Enable Firebase phone auth test mode on localhost (per Firebase docs)
 if (typeof window !== 'undefined' && window.location && window.location.hostname === 'localhost') {
   try {
-    auth.settings.appVerificationDisabledForTesting = true;
-    // eslint-disable-next-line no-console
-    console.log("Firebase Auth: appVerificationDisabledForTesting enabled on localhost");
+    if (auth && auth.settings && typeof auth.settings === 'object') {
+      auth.settings.appVerificationDisabledForTesting = true;
+      // eslint-disable-next-line no-console
+      console.log("Firebase Auth: appVerificationDisabledForTesting enabled on localhost");
+    }
   } catch (_) {
     // ignore if settings not available
   }

@@ -16,7 +16,7 @@ const HeroComponent = () =>{
                 Your one donation can save up to three lives. Join our community of donors and help those in need with the gift of life.
               </p>
               <div className="flex items-start flex-row gap-4">
-                <Link to="/donate">
+                <Link to="/register">
                   <Button>
                     Register as Donor
                   </Button>

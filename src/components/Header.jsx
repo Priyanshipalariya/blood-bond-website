@@ -2,13 +2,13 @@ import { useState } from "react";
 import { GiHamburgerMenu, GiHeartDrop } from "react-icons/gi";
 import { ImCross } from "react-icons/im";
 import { Link, useLocation } from "react-router";
-import ProfileDropdown from "./ProfileDropdown";
+import { FaUserCircle, } from "react-icons/fa";
 
 
 const Navbar = () => {
   const navLinks = [
     { path: "/", label: "Home" },
-    { path: "/donate", label: "Register as Donor" },
+    { path: "/register", label: "Register as Donor" },
     { path: "/request", label: "Find Donor" },
     { path: "/about", label: "About" },
     { path: "/contact", label: "Contact" }
@@ -48,9 +48,10 @@ const Navbar = () => {
             >{label}
             </Link>
           ))}
-          
-          {/* Profile Dropdown */}
-          <ProfileDropdown />
+
+          {/* <div>
+            <FaUserCircle className=" rounded-full text-red-700 text-3xl" />
+          </div> */}
         </nav>
       </div>
 
@@ -70,16 +71,14 @@ const Navbar = () => {
               to={path}
               className={`border-b border-gray-100 py-2.5 hover:text-gray-400 transition-colors duration-200 ${pathname === path ? "text-red-700 pointer-events-none" : ""
                 }`}
+
+
               onClick={() => setIsMenuOpen(false)}
             >
               {label}
+
             </Link>
           ))}
-          
-          {/* Mobile Profile Section */}
-          <div className="border-t border-gray-100 py-2">
-            <ProfileDropdown />
-          </div>
         </nav>
       </div>
     </header>

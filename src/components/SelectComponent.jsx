@@ -24,7 +24,7 @@ const SelectContent = ({ children, position = "popper", ...props }) => (
   <SelectPrimitive.Portal>
     <SelectPrimitive.Content
       className="relative my-1 z-50 bg-gray-100 max-h-60 min-w-[8rem] overflow-auto rounded-md border shadow-md"
-      position={position}
+      position={position}hite
       {...props}
     >
       <SelectPrimitive.ScrollUpButton className="flex items-center justify-center py-1">

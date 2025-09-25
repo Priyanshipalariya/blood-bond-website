@@ -197,10 +197,10 @@ const RegisterPage = () => {
             });
             setPincodeError("");
             
-            // Don't reload in production - just reset form
-            // setTimeout(() => {
-            //     window.location.reload();
-            // }, 2000);
+            // Redirect to homepage after success
+            setTimeout(() => {
+                window.location.href = '/';
+            }, 2000);
         } catch (error) {
             console.error("Error saving donor details:", error);
             toast.error('Error saving registration details. Please try again.', {

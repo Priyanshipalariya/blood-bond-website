@@ -82,15 +82,15 @@ const OTPVerification = ({
         window.recaptchaVerifier = null;
       }
 
-      // Wait a bit for cleanup
-      await new Promise(resolve => setTimeout(resolve, 200));
+      // Wait longer to avoid rate limiting
+      await new Promise(resolve => setTimeout(resolve, 1000));
 
       const verifier = setupRecaptcha();
       const phoneWithCountryCode = `+91${phoneNum}`;
       const result = await signInWithPhoneNumber(auth, phoneWithCountryCode, verifier);
       setConfirmation(result);
       setStep(2);
-      setResendTimer(30);
+      setResendTimer(60); // Increased to 60 seconds
       setIsResendDisabled(true);
       toast.success("OTP sent successfully!", {
         position: "top-right",
@@ -98,10 +98,17 @@ const OTPVerification = ({
       });
     } catch (error) {
       console.error("Error sending OTP:", error);
-      toast.error("Failed to send OTP. Please try again.", {
-        position: "top-right",
-        autoClose: 5000,
-      });
+      if (error.code === 'auth/too-many-requests') {
+        toast.error("Too many requests. Please wait before trying again.", {
+          position: "top-right",
+          autoClose: 5000,
+        });
+      } else {
+        toast.error("Failed to send OTP. Please try again.", {
+          position: "top-right",
+          autoClose: 5000,
+        });
+      }
     } finally {
       setIsLoading(false);
     }

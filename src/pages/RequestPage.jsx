@@ -3,11 +3,14 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import OTPVerification from '../components/OTPVerification';
 
 const RequestPage = () => {
     const [matchedDonors, setMatchedDonors] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [showResults, setShowResults] = useState(false);
+    const [showOTPVerification, setShowOTPVerification] = useState(false);
+    const [pendingSearchData, setPendingSearchData] = useState(null);
 
     const bloodGroups = [
         "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"
@@ -27,6 +30,15 @@ const RequestPage = () => {
     });
 
     const handleSubmit = (values, { setSubmitting }) => {
+        // Store search data and show OTP verification
+        setPendingSearchData(values);
+        setShowOTPVerification(true);
+        setSubmitting(false);
+    };
+
+    const handleOTPSuccess = () => {
+        if (!pendingSearchData) return;
+
         setIsLoading(true);
         try {
             const storedDonors = localStorage.getItem('donor');
@@ -40,8 +52,8 @@ const RequestPage = () => {
 
             const allDonors = JSON.parse(storedDonors);
             const filteredDonors = allDonors.filter(donor => 
-                donor.bloodGroup === values.bloodGroup && 
-                donor.pincode === values.pincode
+                donor.bloodGroup === pendingSearchData.bloodGroup && 
+                donor.pincode === pendingSearchData.pincode
             );
 
             if (filteredDonors.length === 0) {
@@ -58,6 +70,7 @@ const RequestPage = () => {
             }
 
             setMatchedDonors(filteredDonors);
+            setPendingSearchData(null);
         } catch (error) {
             console.error("Error finding donors:", error);
             toast.error('Error searching for donors. Please try again.', {
@@ -66,8 +79,12 @@ const RequestPage = () => {
             });
         } finally {
             setIsLoading(false);
-            setSubmitting(false);
         }
+    };
+
+    const handleOTPClose = () => {
+        setShowOTPVerification(false);
+        setPendingSearchData(null);
     };
 
     const handleBackToSearch = () => {
@@ -220,6 +237,13 @@ const RequestPage = () => {
                     </div>
                 )}
             </div>
+            
+            <OTPVerification
+                isOpen={showOTPVerification}
+                onClose={handleOTPClose}
+                onSuccess={handleOTPSuccess}
+                title="Verify Your Phone Number"
+            />
         </div>
     );
 };

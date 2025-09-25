@@ -3,6 +3,7 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import OTPVerification from '../components/OTPVerification';
 
 const RegisterPage = () => {
     const [locationDetails, setLocationDetails] = useState({
@@ -14,6 +15,8 @@ const RegisterPage = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [pincodeError, setPincodeError] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [showOTPVerification, setShowOTPVerification] = useState(false);
+    const [pendingFormData, setPendingFormData] = useState(null);
 
     const bloodGroups = [
         "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"
@@ -131,56 +134,20 @@ const RegisterPage = () => {
                 return;
             }
 
-            // Get existing donors from localStorage
-            const storedDonors = localStorage.getItem('donor');
-            console.log('Current stored donors:', storedDonors);
-            
-            // Parse the stored data or initialize empty array
-            const existingDonors = storedDonors ? JSON.parse(storedDonors) : [];
-            console.log('Parsed existing donors:', existingDonors);
-            
-            // Create new donor object with form values and location details
-            const newDonor = {
+            // Store form data and show OTP modal
+            const formData = {
                 ...values,
                 ...locationDetails,
-                id: Date.now(), // Add unique ID
+                id: Date.now(),
                 registrationDate: new Date().toISOString()
             };
-            console.log('New donor to be added:', newDonor);
-
-            // Add new donor to the array
-            const updatedDonors = [...existingDonors, newDonor];
-            console.log('Updated donors array:', updatedDonors);
-
-            // Save updated array to localStorage
-            localStorage.setItem('donor', JSON.stringify(updatedDonors));
             
-            // Verify the update
-            const verifyStored = localStorage.getItem('donor');
-            console.log('Verified stored data:', verifyStored);
-
-            // Show success message
-            toast.success('Registration successful!', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
-
-            // Reset form and location details
-            resetForm();
-            setLocationDetails({
-                state: "",
-                district: "",
-                city: ""
-            });
-            setPincodeError("");
+            setPendingFormData(formData);
+            setShowOTPVerification(true);
+            
         } catch (error) {
-            console.error("Error saving donor details:", error);
-            toast.error('Error saving registration details. Please try again.', {
+            console.error("Error preparing registration:", error);
+            toast.error('Error preparing registration. Please try again.', {
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -193,6 +160,64 @@ const RegisterPage = () => {
             setIsSubmitting(false);
             setSubmitting(false);
         }
+    };
+
+    const handleOTPSuccess = () => {
+        try {
+            // Get existing donors from localStorage
+            const storedDonors = localStorage.getItem('donor');
+            const existingDonors = storedDonors ? JSON.parse(storedDonors) : [];
+            
+            // Add new donor to the array
+            const updatedDonors = [...existingDonors, pendingFormData];
+            
+            // Save updated array to localStorage
+            localStorage.setItem('donor', JSON.stringify(updatedDonors));
+            
+            // Show success message
+            toast.success('Registration successful! Your phone number has been verified.', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+
+            // Close modal and reset pending data
+            setShowOTPVerification(false);
+            setPendingFormData(null);
+            
+            // Reset form and location details
+            setLocationDetails({
+                state: "",
+                district: "",
+                city: ""
+            });
+            setPincodeError("");
+            
+            // Reload after a delay to show success message
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
+        } catch (error) {
+            console.error("Error saving donor details:", error);
+            toast.error('Error saving registration details. Please try again.', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
+    };
+
+    const handleOTPClose = () => {
+        setShowOTPVerification(false);
+        setPendingFormData(null);
     };
 
     return (
@@ -356,6 +381,14 @@ const RegisterPage = () => {
                     )}
                 </Formik>
             </div>
+            
+            <OTPVerification
+                isOpen={showOTPVerification}
+                onClose={handleOTPClose}
+                onSuccess={handleOTPSuccess}
+                phoneNumber={pendingFormData?.contact}
+                title="Verify Your Phone Number"
+            />
         </div>
     );
 };

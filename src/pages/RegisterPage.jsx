@@ -3,9 +3,11 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router';
 import OTPVerification from '../components/OTPVerification';
 
 const RegisterPage = () => {
+    const navigate = useNavigate();
     const [locationDetails, setLocationDetails] = useState({
         state: "",
         district: "",
@@ -197,10 +199,10 @@ const RegisterPage = () => {
             });
             setPincodeError("");
             
-            // Don't reload in production - just reset form
-            // setTimeout(() => {
-            //     window.location.reload();
-            // }, 2000);
+            // Redirect to home page after successful registration
+            setTimeout(() => {
+                navigate("/");
+            }, 2000);
         } catch (error) {
             console.error("Error saving donor details:", error);
             toast.error('Error saving registration details. Please try again.', {
